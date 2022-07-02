@@ -1,9 +1,6 @@
 package com.example.boardgamesboji.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface BgameDao {
@@ -17,7 +14,7 @@ interface BgameDao {
     @Query("DELETE FROM bgames")
     fun deleteAll()
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg libros:BoardGameEntity)
 
     @Delete

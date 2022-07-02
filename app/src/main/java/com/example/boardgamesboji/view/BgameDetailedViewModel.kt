@@ -19,9 +19,9 @@ class BgameDetailedViewModel(application: Application):AndroidViewModel(applicat
         viewModelScope.launch {
             val app= getApplication<BoardGamesBoji>()
             val repo = BoardGameRepository(app.bgameService, app.bgameDao)
-            val bgamesFromRepo = repo.findAll()
-            if(!bgamesFromRepo.isNullOrEmpty()){
-                bgame.postValue(bgamesFromRepo)
+            val bgameFromRepo = repo.findById(id)
+            if(bgameFromRepo != null){
+                bgame.postValue(bgameFromRepo)
             }
         }
     }

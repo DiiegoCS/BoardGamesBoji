@@ -1,6 +1,7 @@
 package com.example.boardgamesboji.service
 
 import com.example.boardgamesboji.db.BgameDao
+import com.example.boardgamesboji.helper.bgameHelper
 import com.example.boardgamesboji.mapper.BgameMapper
 import com.example.boardgamesboji.model.BoardGame
 import kotlinx.coroutines.Dispatchers
@@ -11,6 +12,20 @@ class BoardGameRepository(
     val bgameDao: BgameDao
 
 ) {
+    suspend fun findById(id:Int): BoardGame {
+        return withContext(Dispatchers.IO) {
+            val response = boardGameService.gameDetail(id)
+            if(response.isSuccessful){
+                val bgame = response.body() ?: bgameHelper.emptyBgameModel()
+
+                bgameDao.insertAll(BgameMapper.toEntity(bgame))
+
+                bgame
+            }else{
+                bgameDao.findById(id)
+            }
+        }
+    }
 
     suspend fun findAll(): List<BoardGame> {
         return withContext(Dispatchers.IO) {
