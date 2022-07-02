@@ -17,6 +17,7 @@
         android:theme="@style/Theme.BoardGamesBoji"
         tools:targetApi="31">
         <activity
+            android:parentActivityName=".MainActivity"
             android:name=".GameDetailedView"
             android:exported="false" />
         <activity

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <View
         android:id="@+id/view"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageDetalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -48,7 +48,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageDetalle" />
 
     <TextView
         android:id="@+id/txtEditorial"
@@ -77,18 +77,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEditorial" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/off_link"
-
-        android:textColor="#263238"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrecio" />
-
     <Button
         android:id="@+id/btnComprar"
         android:layout_width="wrap_content"
@@ -112,6 +100,7 @@
         android:backgroundTint="@color/dark_primary_color"
         android:contentDescription="@string/boji_board_games"
         app:circularflow_radiusInDP="10"
+        app:layout_constraintBottom_toTopOf="@+id/guideHorMid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnComprar"
         app:srcCompat="@android:drawable/ic_menu_call"
@@ -204,19 +193,25 @@
                 android:id="@+id/txtDesigner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/designer" />
+                android:layout_margin="8dp"
+                android:text="@string/designer"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txtArtist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/artist" />
+                android:layout_margin="8dp"
+                android:text="@string/artist"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txtDescrpcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/description" />
+                android:layout_margin="8dp"
+                android:text="@string/description"
+                android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>
 
