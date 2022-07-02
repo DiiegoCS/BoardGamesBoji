@@ -1,30 +1,34 @@
 package com.example.boardgamesboji.service
 
-import com.example.boardgamesboji.model.BoardGameModelo
+import com.example.boardgamesboji.db.BgameDao
+import com.example.boardgamesboji.mapper.BgameMapper
+import com.example.boardgamesboji.model.BoardGame
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-class BoardGameRepository {
+class BoardGameRepository(
+    val boardGameService: boardGameService,
+    val bgameDao: BgameDao
 
-    val boardGameService: boardGameService
+) {
 
-    init {
-        //Retrofit
-        val baseUrl = "https://board-games-fake-api.herokuapp.com/"
-        val retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        boardGameService =
-            retrofit.create(com.example.boardgamesboji.service.boardGameService::class.java)
-    }
-
-    suspend fun findAll(): List<BoardGameModelo> {
+    suspend fun findAll(): List<BoardGame> {
         return withContext(Dispatchers.IO) {
             val response = boardGameService.gameList()
-            response.body() ?: emptyList()
+            if (response.isSuccessful) {
+                val bgames = response.body() ?: emptyList()
+
+                //eliminar cache antigua
+                bgameDao.deleteAll()
+
+               //caché en bbdd
+                bgames.forEach{ boardGameModelo->
+                    bgameDao.insertAll(BgameMapper.toEntity(boardGameModelo))
+                }
+                bgames
+            } else {
+                bgameDao.getAll()
+            }
         }
     }
 }

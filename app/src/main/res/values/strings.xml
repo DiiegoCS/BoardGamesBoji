@@ -2,4 +2,16 @@
     <string name="app_name">BoardGamesBoji</string>
     <string name="gameimage">GameImage</string>
     <string name="boji_board_games">Boji Board Games</string>
+    <string name="nombre_juego">Nombre Juego</string>
+    <string name="edad">Edad</string>
+    <string name="editorial">Editorial</string>
+    <string name="description">Description</string>
+    <string name="artist">Artist</string>
+    <string name="designer">Designer</string>
+    <string name="jugador">Jugador</string>
+    <string name="a_o">año</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="precio">Precio</string>
+    <string name="off_link">Off Link</string>
+    <string name="comprar">Comprar</string>
 </resources>

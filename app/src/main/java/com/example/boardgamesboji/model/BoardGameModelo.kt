@@ -4,23 +4,18 @@ import com.google.gson.annotations.SerializedName
 
 data class BoardGameModelo (
 
-    val id: Int,
-    @SerializedName("name") val nombre:String,
-    @SerializedName("image") val imagen:String,
-    @SerializedName("price") val precio:String,
-    @SerializedName("players") val jugadores:String,
-    @SerializedName("age") val edad:String,
-    @SerializedName("year") val anno:Int,
-    @SerializedName("playing_time") val tiempoDeJuego:String,
-    @SerializedName("description") val descripcion:String,
-    @SerializedName("official_link") val linkOficial:String,
-    @SerializedName("Designer") val disennador:String,
-    @SerializedName("Artist") val artista:String,
-    @SerializedName("Publisher") val editorial:String,
-    @SerializedName("classification") val clasificacion:Classification,
-    )
+    override val id: Int,
+    @SerializedName("name") override val nombre:String,
+    @SerializedName("image") override val imagen:String,
+    @SerializedName("price") override val precio:String,
+    @SerializedName("players") override val jugadores:String,
+    @SerializedName("age") override val edad:String,
+    @SerializedName("year") override val anno:Int,
+    @SerializedName("playing_time") override val tiempoDeJuego:String,
+    @SerializedName("description") override val descripcion:String,
+    @SerializedName("official_link") override val linkOficial:String,
+    @SerializedName("Designer") override val disennador:String,
+    @SerializedName("Artist") override val artista:String,
+    @SerializedName("Publisher") override val editorial:String
+    ): BoardGame
 
-data class Classification(
-    @SerializedName("category")val categoria: String,
-    @SerializedName("mechanisms")val mecanicas: String
-)

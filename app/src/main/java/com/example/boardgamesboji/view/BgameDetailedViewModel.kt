@@ -11,17 +11,17 @@ import com.example.boardgamesboji.model.BoardGameModelo
 import com.example.boardgamesboji.service.BoardGameRepository
 import kotlinx.coroutines.launch
 
-class BgameViewModel(application: Application):AndroidViewModel(application) {
+class BgameDetailedViewModel(application: Application):AndroidViewModel(application) {
 
-    val bgames = MutableLiveData<List<BoardGame>>()
+    val bgame = MutableLiveData<BoardGame>()
 
-    fun cargarBgames(){
+    fun cargarBgame(id:Int){
         viewModelScope.launch {
             val app= getApplication<BoardGamesBoji>()
             val repo = BoardGameRepository(app.bgameService, app.bgameDao)
             val bgamesFromRepo = repo.findAll()
             if(!bgamesFromRepo.isNullOrEmpty()){
-                bgames.postValue(bgamesFromRepo)
+                bgame.postValue(bgamesFromRepo)
             }
         }
     }
